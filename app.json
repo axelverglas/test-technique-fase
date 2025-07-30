@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "test-expo",
-    "slug": "test-expo",
+    "name": "fase",
+    "slug": "fase",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
+    "scheme": "fase",
     "jsEngine": "hermes",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": false,
@@ -21,7 +21,7 @@
         "com.apple.developer.usernotifications.sound": true
       },
       "supportsTablet": true,
-      "bundleIdentifier": "com.smr-digital.test-expo"
+      "bundleIdentifier": "com.club-theory.fase"
     },
     "web": {
       "bundler": "metro",
