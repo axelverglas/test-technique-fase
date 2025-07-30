@@ -42,9 +42,9 @@ export const useUser = () => {
       return user.user_metadata.avatar_url;
 
     const params = new URLSearchParams();
-    const name = profile?.username || user?.email || "";
-    params.append("name", name);
-    params.append("size", "256"); // will be resized again by NextImage/SolitoImage
+    const displayName = profile?.name || user?.email || "";
+    params.append("name", displayName);
+    params.append("size", "256");
     return `https://ui-avatars.com/api.jpg?${params.toString()}`;
   })();
 

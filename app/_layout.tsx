@@ -12,7 +12,8 @@ import { useColorScheme } from "@/components/useColorScheme";
 import { Slot } from "expo-router";
 import { AuthProvider } from "@/providers/AuthProvider";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-
+import { Toaster } from "sonner-native";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 import "../global.css";
 
 const queryClient = new QueryClient();
@@ -63,16 +64,19 @@ function RootLayoutNav() {
   const colorScheme = useColorScheme();
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <GluestackUIProvider mode={colorScheme === "dark" ? "dark" : "light"}>
-        <ThemeProvider
-          value={colorScheme === "dark" ? DarkTheme : DefaultTheme}
-        >
-          <AuthProvider>
-            <Slot />
-          </AuthProvider>
-        </ThemeProvider>
-      </GluestackUIProvider>
-    </QueryClientProvider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <QueryClientProvider client={queryClient}>
+        <GluestackUIProvider mode={colorScheme === "dark" ? "dark" : "light"}>
+          <ThemeProvider
+            value={colorScheme === "dark" ? DarkTheme : DefaultTheme}
+          >
+            <AuthProvider>
+              <Slot />
+              <Toaster />
+            </AuthProvider>
+          </ThemeProvider>
+        </GluestackUIProvider>
+      </QueryClientProvider>
+    </GestureHandlerRootView>
   );
 }

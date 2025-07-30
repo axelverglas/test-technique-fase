@@ -31,14 +31,17 @@ export default function SignUpScreen({ navigation }: Props) {
     setIsLoading(true);
     setStep2Data(data); // Sauvegarder les données de l'étape 2 aussi
 
-    const { error } = await signUp(data.email, data.password);
+    const { error } = await signUp(data.email, data.password, {
+      firstName: step1Data.firstName,
+      lastName: step1Data.lastName,
+      username: step1Data.username,
+    });
 
     setIsLoading(false);
 
     if (error) {
       alert(error.message);
     } else {
-      alert("Inscription réussie, vérifie tes emails !");
       if (navigation) navigation.navigate("SignIn");
     }
   };

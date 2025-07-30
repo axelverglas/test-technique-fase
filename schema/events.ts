@@ -12,23 +12,5 @@ export const EventSchema = z.object({
 
 export const CreateEventSchema = EventSchema.omit({ id: true });
 
-export const UserFavoriteSchema = z.object({
-  id: z.string().uuid(),
-  user_id: z.string().uuid(),
-  event_id: z.string().uuid(),
-  created_at: z.string(),
-});
-
-export const CreateFavoriteSchema = UserFavoriteSchema.omit({
-  id: true,
-  created_at: true,
-});
-
 export type Event = z.infer<typeof EventSchema>;
 export type CreateEvent = z.infer<typeof CreateEventSchema>;
-export type UserFavorite = z.infer<typeof UserFavoriteSchema>;
-export type CreateFavorite = z.infer<typeof CreateFavoriteSchema>;
-
-export interface EventWithFavorite extends Event {
-  isFavorite: boolean;
-}

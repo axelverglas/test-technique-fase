@@ -4,7 +4,6 @@ import { CreateEvent } from "@/schema/events";
 import { useUser } from "@/hooks/useUser";
 
 export const useEvents = () => {
-  const { user } = useUser();
   const queryClient = useQueryClient();
 
   const {
@@ -14,25 +13,18 @@ export const useEvents = () => {
     refetch,
   } = useQuery({
     queryKey: ["events"],
-    queryFn: eventsService.getAllEvents,
-  });
-
-  const {
-    data: eventsWithFavorites = [],
-    isLoading: isLoadingWithFavorites,
-    error: errorWithFavorites,
-    refetch: refetchWithFavorites,
-  } = useQuery({
-    queryKey: ["events-with-favorites", user?.id],
-    queryFn: () => eventsService.getEventsWithFavorites(user?.id || ""),
-    enabled: !!user?.id,
+    queryFn: async () => {
+      console.log("Fetching events...");
+      const events = await eventsService.getAllEvents();
+      console.log("Events fetched:", events);
+      return events;
+    },
   });
 
   const createEventMutation = useMutation({
     mutationFn: eventsService.createEvent,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["events"] });
-      queryClient.invalidateQueries({ queryKey: ["events-with-favorites"] });
     },
   });
 
@@ -42,13 +34,9 @@ export const useEvents = () => {
 
   return {
     events,
-    eventsWithFavorites,
     isLoading,
-    isLoadingWithFavorites,
     error,
-    errorWithFavorites,
     refetch,
-    refetchWithFavorites,
     createEvent,
     isCreatingEvent: createEventMutation.isPending,
   };

@@ -3,23 +3,24 @@ import { Box } from "@/components/ui/box";
 import { Text } from "@/components/ui/text";
 import { VStack } from "@/components/ui/vstack";
 import { HStack } from "@/components/ui/hstack";
-import { Image } from "@/components/ui/image";
 import { Pressable } from "@/components/ui/pressable";
 import { Icon } from "@/components/ui/icon";
 import { Bookmark, BookmarkCheck } from "lucide-react-native";
-import { EventWithFavorite } from "@/schema/events";
+import { Event } from "@/schema/events";
+import { ImageBackground } from "@/components/ui/image-background";
+import { useFavorites } from "@/hooks/useFavorites";
+import { useRouter } from "expo-router";
+import { Button } from "@/components/ui/button";
 
 interface EventCardProps {
-  event: EventWithFavorite;
-  onToggleFavorite: (eventId: string) => void;
+  event: Event;
   onPress?: () => void;
 }
 
-export const EventCard = ({
-  event,
-  onToggleFavorite,
-  onPress,
-}: EventCardProps) => {
+export const EventCard = ({ event, onPress }: EventCardProps) => {
+  const { isFavorite, toggleFavorite } = useFavorites();
+  const router = useRouter();
+
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     return date.toLocaleDateString("fr-FR", {
@@ -29,55 +30,51 @@ export const EventCard = ({
     });
   };
 
-  const handleFavoritePress = () => {
-    onToggleFavorite(event.id);
+  const handleFavoritePress = (e: any) => {
+    e.stopPropagation();
+    toggleFavorite(event.id);
+  };
+
+  const handleCardPress = () => {
+    router.push(`/events/${event.id}`);
   };
 
   return (
-    <Pressable onPress={onPress}>
-      <Box className="bg-background-0 rounded-lg shadow-sm border border-outline-200 overflow-hidden">
-        <Image
-          source={{ uri: event.image }}
-          alt={event.title}
-          className="w-full h-48"
-          resizeMode="cover"
-        />
+    <Pressable onPress={handleCardPress}>
+      <Box className="rounded-lg shadow-sm border border-outline-200 overflow-hidden">
+        <Box className="relative">
+          <ImageBackground
+            source={{ uri: event.image }}
+            alt={event.title}
+            style={{ width: "100%", height: 150 }}
+            resizeMode="cover"
+            className="rounded-lg"
+          />
+
+          <Button
+            onPress={handleFavoritePress}
+            className="absolute top-4 left-4 p-3 rounded-full"
+          >
+            <Icon
+              as={isFavorite(event.id) ? BookmarkCheck : Bookmark}
+              size="sm"
+            />
+          </Button>
+        </Box>
 
         <VStack space="sm" className="p-4">
           <HStack className="justify-between items-start">
             <VStack space="xs" className="flex-1">
-              <Text className="text-lg font-semibold text-typography-900">
-                {event.title}
-              </Text>
-              <Text className="text-sm text-typography-600">
-                {formatDate(event.date)}
-              </Text>
+              <Text className="text-lg font-semibold">{event.title}</Text>
+              <Text className="text-sm">{formatDate(event.date)}</Text>
               {event.location && (
-                <Text className="text-sm text-typography-500">
-                  📍 {event.location}
-                </Text>
-              )}
-              {event.price !== undefined && (
-                <Text className="text-sm text-typography-500">
-                  💰 {event.price}€
-                </Text>
+                <Text className="text-sm">{event.location}</Text>
               )}
             </VStack>
-
-            <Pressable
-              onPress={handleFavoritePress}
-              className="p-2 rounded-full bg-background-100"
-            >
-              <Icon
-                as={event.isFavorite ? BookmarkCheck : Bookmark}
-                size="md"
-                color={event.isFavorite ? "primary.500" : "typography.400"}
-              />
-            </Pressable>
           </HStack>
 
           {event.description && (
-            <Text className="text-sm text-typography-600" numberOfLines={2}>
+            <Text className="text-sm" numberOfLines={2}>
               {event.description}
             </Text>
           )}
