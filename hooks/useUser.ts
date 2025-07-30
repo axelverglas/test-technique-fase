@@ -1,0 +1,61 @@
+import { useQuery } from "@tanstack/react-query";
+import { useSessionContext } from "@/providers/AuthProvider";
+
+function useProfile() {
+  const { session, supabaseClient } = useSessionContext();
+  const user = session?.user;
+
+  const { data, isLoading, refetch } = useQuery({
+    queryKey: ["profile", user?.id],
+    queryFn: async () => {
+      if (!user?.id) return null;
+      const { data, error } = await supabaseClient
+        .from("profiles")
+        .select("*")
+        .eq("id", user.id)
+        .single();
+
+      if (error) {
+        // no rows - edge case of user being deleted
+        if (error.code === "PGRST116") {
+          await supabaseClient.auth.signOut();
+          return null;
+        }
+        throw new Error(error.message);
+      }
+      return data;
+    },
+    enabled: !!user?.id,
+  });
+
+  return { data, isLoading, refetch };
+}
+
+export const useUser = () => {
+  const { session, isLoading: isLoadingSession } = useSessionContext();
+  const user = session?.user;
+  const { data: profile, refetch, isLoading: isLoadingProfile } = useProfile();
+
+  const avatarUrl = (function () {
+    if (profile?.avatar_url) return profile.avatar_url;
+    if (typeof user?.user_metadata.avatar_url === "string")
+      return user.user_metadata.avatar_url;
+
+    const params = new URLSearchParams();
+    const name = profile?.username || user?.email || "";
+    params.append("name", name);
+    params.append("size", "256"); // will be resized again by NextImage/SolitoImage
+    return `https://ui-avatars.com/api.jpg?${params.toString()}`;
+  })();
+
+  return {
+    session,
+    user,
+    profile,
+    avatarUrl,
+    updateProfile: () => refetch(),
+    isLoadingSession,
+    isLoadingProfile,
+    isLoading: isLoadingSession || isLoadingProfile,
+  };
+};
