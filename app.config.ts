@@ -58,8 +58,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       config: {
         googleMaps: {
           apiKey:
-            process.env.EXPO_PUBLIC_GOOGLE_MAPS_API_KEY_ANDROID ||
-            "AIzaSyCD-EPf5wxqdytmZ6uTSn-65bCHU2kPMw0",
+            process.env.EXPO_PUBLIC_GOOGLE_MAPS_API_KEY_ANDROID
         },
       },
     },
