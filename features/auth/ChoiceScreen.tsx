@@ -37,41 +37,13 @@ export default function ChoiceScreen() {
 
       {/* Boutons en bas de page */}
       <VStack space="md" className="mb-6">
-        {/* Bouton Apple */}
-        <Button
-          size="xl"
-          variant="solid"
-          className="w-full"
-          action="primary"
-          onPress={handleAppleSignIn}
-        >
-          <HStack space="md" className="items-center">
-            <Ionicons name="logo-apple" size={20} color="#fff" />
-            <ButtonText variant="solid" action="primary">
-              Continuer avec Apple
-            </ButtonText>
-          </HStack>
-        </Button>
-
-        {/* Bouton Google */}
-        <Button
-          size="xl"
-          className="w-full bg-error-400"
-          onPress={handleGoogleSignIn}
-        >
-          <HStack space="md" className="items-center">
-            <Ionicons name="logo-google" size={20} color="#fff" />
-            <ButtonText>Continuer avec Google</ButtonText>
-          </HStack>
-        </Button>
-
         {/* Bouton Email et mot de passe */}
         <Link href="/(auth)/sign-in" asChild>
           <Button
             size="xl"
             variant="outline"
             action="primary"
-            className="w-full"
+            className="w-full rounded-sm"
           >
             <HStack space="md" className="items-center">
               <Ionicons name="mail-outline" size={20} color="#6B7280" />
@@ -87,7 +59,7 @@ export default function ChoiceScreen() {
       <Text className="text-center text-typography-600">
         Pas de compte ?{" "}
         <Link href="/(auth)/sign-up">
-          <Text className="text-primary-500 font-semibold">Inscrivez-vous</Text>
+          <Text className="font-semibold">Inscrivez-vous</Text>
         </Link>
       </Text>
     </View>

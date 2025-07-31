@@ -36,7 +36,7 @@ export const EventCard = ({ event, onPress }: EventCardProps) => {
   };
 
   const handleCardPress = () => {
-    router.push(`/events/${event.id}`);
+    router.push(`/(tabs)/events/${event.id}`);
   };
 
   return (
@@ -53,7 +53,8 @@ export const EventCard = ({ event, onPress }: EventCardProps) => {
 
           <Button
             onPress={handleFavoritePress}
-            className="absolute top-4 left-4 p-3 rounded-full"
+            className="absolute top-4 left-4 p-3 rounded-full bg-white"
+            action="secondary"
           >
             <Icon
               as={isFavorite(event.id) ? BookmarkCheck : Bookmark}

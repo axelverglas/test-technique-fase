@@ -42,10 +42,7 @@ export default function EventDetailPage() {
   }
 
   return (
-    <SafeAreaView
-      edges={["top", "left", "right", "bottom"]}
-      style={{ flex: 1 }}
-    >
+    <SafeAreaView edges={["top", "left", "right"]} style={{ flex: 1 }}>
       <EventDetailScreen event={event} />
     </SafeAreaView>
   );

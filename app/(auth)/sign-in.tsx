@@ -1,4 +1,4 @@
-import SignInScreen from "@/features/auth/signin-screen";
+import SignInScreen from "@/features/auth/SignInScreen";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function SignIn() {

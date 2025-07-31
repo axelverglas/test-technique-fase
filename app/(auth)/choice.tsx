@@ -1,4 +1,4 @@
-import ChoiceScreen from "@/features/auth/choice-screen";
+import ChoiceScreen from "@/features/auth/ChoiceScreen";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Choice() {

@@ -41,10 +41,14 @@ export const useFavorites = () => {
     try {
       if (wasFavorite) {
         await removeFavoriteMutation.mutateAsync(eventId);
-        toast.success("Retiré des favoris");
+        toast.success("Retiré des favoris", {
+          duration: 1000,
+        });
       } else {
         await addFavoriteMutation.mutateAsync(eventId);
-        toast.success("Ajouté aux favoris");
+        toast.success("Ajouté aux favoris", {
+          duration: 1000,
+        });
       }
     } catch (error) {
       console.error("Erreur lors de la modification du favori:", error);

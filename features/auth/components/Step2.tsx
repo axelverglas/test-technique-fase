@@ -124,6 +124,7 @@ export default function Step2({
             variant="outline"
             onPress={onBack}
             isDisabled={isSubmitting || isLoading}
+            className="rounded-sm"
           >
             <ButtonText>Retour</ButtonText>
           </Button>

@@ -6,8 +6,8 @@ import { HStack } from "../../components/ui/hstack";
 import { Progress, ProgressFilledTrack } from "../../components/ui/progress";
 import { View } from "react-native";
 import { useAuth } from "../../hooks/useAuth";
-import Step1, { Step1Data } from "@/features/auth/components/step-1";
-import Step2, { Step2Data } from "@/features/auth/components/step-2";
+import Step1, { Step1Data } from "@/features/auth/components/Step1";
+import Step2, { Step2Data } from "@/features/auth/components/Step2";
 
 type Props = {
   navigation?: { navigate: (route: string) => void };

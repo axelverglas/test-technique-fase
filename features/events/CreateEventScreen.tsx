@@ -1,4 +1,5 @@
 import React from "react";
+import { ScrollView } from "react-native";
 import { Box } from "@/components/ui/box";
 import { Text } from "@/components/ui/text";
 import { VStack } from "@/components/ui/vstack";
@@ -17,28 +18,24 @@ export const CreateEventScreen = () => {
     try {
       await createEvent(eventData);
       // Rediriger vers la page d'accueil après création
-      router.push("/(tabs)/");
+      router.push("/");
     } catch (error) {
       console.error("Erreur lors de la création de l'événement:", error);
     }
   };
 
   return (
-    <SafeAreaView edges={["top", "bottom"]}>
-      <Box className="flex-1 bg-background-0">
-        <VStack space="lg" className="flex-1">
-          <HStack className="justify-center items-center p-6">
-            <Text className="text-2xl font-bold">Créer un événement</Text>
-          </HStack>
-
-          <Box className="flex-1 px-6">
-            <CreateEventForm
-              onSubmit={handleCreateEvent}
-              isLoading={isCreatingEvent}
-            />
-          </Box>
-        </VStack>
-      </Box>
-    </SafeAreaView>
+    <ScrollView
+      className="flex-1"
+      showsVerticalScrollIndicator={false}
+      contentContainerStyle={{ flexGrow: 1 }}
+    >
+      <VStack className="px-4 py-4" space="lg">
+        <CreateEventForm
+          onSubmit={handleCreateEvent}
+          isLoading={isCreatingEvent}
+        />
+      </VStack>
+    </ScrollView>
   );
 };

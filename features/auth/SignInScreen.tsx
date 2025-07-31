@@ -74,7 +74,11 @@ export default function SignInScreen({ navigation }: Props) {
           )}
         </VStack>
 
-        <Button onPress={handleSubmit(onSubmit)} isDisabled={isSubmitting}>
+        <Button
+          onPress={handleSubmit(onSubmit)}
+          isDisabled={isSubmitting}
+          className="rounded-sm"
+        >
           <ButtonText>Se connecter</ButtonText>
         </Button>
       </VStack>

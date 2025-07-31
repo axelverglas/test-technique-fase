@@ -4,7 +4,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Box } from "@/components/ui/box";
 import { Text } from "@/components/ui/text";
 import { VStack } from "@/components/ui/vstack";
-import { HStack } from "@/components/ui/hstack";
 import { Input, InputField } from "@/components/ui/input";
 import { Button, ButtonText } from "@/components/ui/button";
 import { Textarea, TextareaInput } from "@/components/ui/textarea";
@@ -16,6 +15,7 @@ import {
   FormControlErrorText,
 } from "@/components/ui/form-control";
 import { CreateEventSchema, CreateEvent } from "@/schema/events";
+import { ImagePicker } from "./ImagePicker";
 
 interface CreateEventFormProps {
   onSubmit: (data: CreateEvent) => void;
@@ -49,7 +49,7 @@ export const CreateEventForm = ({
   };
 
   return (
-    <Box className="p-4">
+    <Box>
       <VStack space="md">
         <Text className="text-xl font-bold text-center mb-4">
           Créer un nouvel événement
@@ -63,7 +63,7 @@ export const CreateEventForm = ({
             control={control}
             name="title"
             render={({ field: { onChange, onBlur, value } }) => (
-              <Input>
+              <Input className="rounded-sm">
                 <InputField
                   placeholder="Titre de l'événement"
                   onBlur={onBlur}
@@ -86,7 +86,7 @@ export const CreateEventForm = ({
             control={control}
             name="date"
             render={({ field: { onChange, onBlur, value } }) => (
-              <Input>
+              <Input className="rounded-sm">
                 <InputField
                   placeholder="YYYY-MM-DD"
                   onBlur={onBlur}
@@ -102,21 +102,15 @@ export const CreateEventForm = ({
         </FormControl>
 
         <FormControl isInvalid={!!errors.image}>
-          <FormControlLabel>
-            <FormControlLabelText>URL de l'image *</FormControlLabelText>
-          </FormControlLabel>
           <Controller
             control={control}
             name="image"
-            render={({ field: { onChange, onBlur, value } }) => (
-              <Input>
-                <InputField
-                  placeholder="https://example.com/image.jpg"
-                  onBlur={onBlur}
-                  onChangeText={onChange}
-                  value={value}
-                />
-              </Input>
+            render={({ field: { onChange, value } }) => (
+              <ImagePicker
+                value={value}
+                onImageSelected={onChange}
+                onImageRemoved={() => onChange("")}
+              />
             )}
           />
           <FormControlError>
@@ -132,7 +126,7 @@ export const CreateEventForm = ({
             control={control}
             name="description"
             render={({ field: { onChange, onBlur, value } }) => (
-              <Textarea>
+              <Textarea className="rounded-sm">
                 <TextareaInput
                   placeholder="Description de l'événement"
                   onBlur={onBlur}
@@ -153,7 +147,7 @@ export const CreateEventForm = ({
             control={control}
             name="location"
             render={({ field: { onChange, onBlur, value } }) => (
-              <Input>
+              <Input className="rounded-sm">
                 <InputField
                   placeholder="Lieu de l'événement"
                   onBlur={onBlur}
@@ -173,7 +167,7 @@ export const CreateEventForm = ({
             control={control}
             name="price"
             render={({ field: { onChange, onBlur, value } }) => (
-              <Input>
+              <Input className="rounded-sm">
                 <InputField
                   placeholder="0"
                   onBlur={onBlur}
@@ -194,7 +188,7 @@ export const CreateEventForm = ({
         <Button
           onPress={handleSubmit(handleFormSubmit)}
           isDisabled={isLoading}
-          className="mt-4"
+          className="mt-4 rounded-sm"
         >
           <ButtonText>
             {isLoading ? "Création..." : "Créer l'événement"}

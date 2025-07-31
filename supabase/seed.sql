@@ -6,14 +6,16 @@ DELETE FROM user_favorites;
 DELETE FROM events;
 
 -- Insérer les événements culturels
-INSERT INTO events (title, date, image, description, location, price) VALUES
+INSERT INTO events (title, date, image, description, location, price, latitude, longitude) VALUES
 (
   'Festival Hip-Hop Underground',
   '2024-02-15',
   'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&h=600&fit=crop',
   'Le plus grand rassemblement de la scène hip-hop underground. MCs, DJs, danseurs et graffeurs réunis pour 3 jours de culture urbaine.',
   'Le Trianon, Paris',
-  35
+  35,
+  48.8697,
+  2.3387
 ),
 (
   'Exposition Street Art & Graffiti',
@@ -21,7 +23,9 @@ INSERT INTO events (title, date, image, description, location, price) VALUES
   'https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=800&h=600&fit=crop',
   'Découvrez les œuvres des plus grands artistes street art français et internationaux. Banksy, Shepard Fairey et bien d''autres.',
   'Galerie Urbaine, Lyon',
-  15
+  15,
+  45.7640,
+  4.8357
 ),
 (
   'Battle de Rap Freestyle',
@@ -29,7 +33,9 @@ INSERT INTO events (title, date, image, description, location, price) VALUES
   'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=800&h=600&fit=crop',
   'Compétition de rap freestyle avec les meilleurs MCs de France. Jury composé de rappeurs confirmés.',
   'Le Divan du Monde, Paris',
-  20
+  20,
+  48.8823,
+  2.3458
 ),
 (
   'Workshop Beatmaking & Production',
@@ -37,7 +43,9 @@ INSERT INTO events (title, date, image, description, location, price) VALUES
   'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop',
   'Apprenez à créer des beats avec des producteurs professionnels. Logic Pro, Ableton, techniques de sampling.',
   'Studio Beat Factory, Marseille',
-  80
+  80,
+  43.2965,
+  5.3698
 ),
 (
   'Concert Rap Indépendant',
@@ -45,7 +53,9 @@ INSERT INTO events (title, date, image, description, location, price) VALUES
   'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=800&h=600&fit=crop',
   'Soirée dédiée aux nouveaux talents du rap français. Découvrez les artistes de demain.',
   'Le Petit Bain, Paris',
-  25
+  25,
+  48.8287,
+  2.3781
 ),
 (
   'Exposition Culture Urbaine',
@@ -53,7 +63,9 @@ INSERT INTO events (title, date, image, description, location, price) VALUES
   'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&h=600&fit=crop',
   'Histoire et évolution de la culture urbaine : hip-hop, breakdance, graffiti, DJing. Photos et vidéos d''archives.',
   'Centre Culturel Urbain, Bordeaux',
-  12
+  12,
+  44.8378,
+  -0.5792
 ),
 (
   'DJ Set Hip-Hop Classics',
@@ -61,7 +73,9 @@ INSERT INTO events (title, date, image, description, location, price) VALUES
   'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&h=600&fit=crop',
   'Voyage dans les classiques du hip-hop avec DJ Cut Killer. De Grandmaster Flash à Kendrick Lamar.',
   'Le Rex Club, Paris',
-  18
+  18,
+  48.8698,
+  2.3473
 ),
 (
   'Atelier Graffiti & Street Art',
@@ -69,7 +83,9 @@ INSERT INTO events (title, date, image, description, location, price) VALUES
   'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop',
   'Initiation au graffiti et street art. Techniques de spray, pochoirs, collages. Matériel fourni.',
   'Atelier Street Art, Nantes',
-  45
+  45,
+  47.2184,
+  -1.5536
 ),
 (
   'Battle de Breakdance',
@@ -77,7 +93,9 @@ INSERT INTO events (title, date, image, description, location, price) VALUES
   'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&h=600&fit=crop',
   'Compétition de breakdance avec les meilleurs B-Boys et B-Girls de France. Catégories solo et crew.',
   'Salle de Danse Urbaine, Toulouse',
-  15
+  15,
+  43.6047,
+  1.4442
 ),
 (
   'Conférence "Hip-Hop & Société"',
@@ -85,7 +103,9 @@ INSERT INTO events (title, date, image, description, location, price) VALUES
   'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&h=600&fit=crop',
   'Débat sur l''impact du hip-hop sur la société française. Avec des sociologues et des artistes.',
   'Université Paris 8, Saint-Denis',
-  0
+  0,
+  48.9356,
+  2.3539
 ),
 (
   'Concert Rap Conscious',
@@ -93,7 +113,9 @@ INSERT INTO events (title, date, image, description, location, price) VALUES
   'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=800&h=600&fit=crop',
   'Soirée dédiée au rap engagé et conscient. Artistes qui utilisent leur voix pour le changement social.',
   'La Bellevilloise, Paris',
-  22
+  22,
+  48.8718,
+  2.3816
 ),
 (
   'Exposition "Femmes du Hip-Hop"',
@@ -101,5 +123,7 @@ INSERT INTO events (title, date, image, description, location, price) VALUES
   'https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=800&h=600&fit=crop',
   'Hommage aux femmes qui ont marqué l''histoire du hip-hop. MCs, DJs, danseuses, graffeuses.',
   'Galerie Féministe, Lyon',
-  8
+  8,
+  45.7640,
+  4.8357
 ); 

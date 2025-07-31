@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "testexpo.app"
-               BlueprintName = "testexpo"
-               ReferencedContainer = "container:testexpo.xcodeproj">
+               BuildableName = "fase.app"
+               BlueprintName = "fase"
+               ReferencedContainer = "container:fase.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "testexpoTests.xctest"
-               BlueprintName = "testexpoTests"
-               ReferencedContainer = "container:testexpo.xcodeproj">
+               BuildableName = "faseTests.xctest"
+               BlueprintName = "faseTests"
+               ReferencedContainer = "container:fase.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "testexpo.app"
-            BlueprintName = "testexpo"
-            ReferencedContainer = "container:testexpo.xcodeproj">
+            BuildableName = "fase.app"
+            BlueprintName = "fase"
+            ReferencedContainer = "container:fase.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "testexpo.app"
-            BlueprintName = "testexpo"
-            ReferencedContainer = "container:testexpo.xcodeproj">
+            BuildableName = "fase.app"
+            BlueprintName = "fase"
+            ReferencedContainer = "container:fase.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

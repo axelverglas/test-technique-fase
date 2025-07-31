@@ -43,6 +43,12 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => <User size={24} color={color} />,
         }}
       />
+      <Tabs.Screen
+        name="events/[id]"
+        options={{
+          href: null, // Cache cet onglet de la tab bar
+        }}
+      />
     </Tabs>
   );
 }

@@ -35,7 +35,9 @@ export const FavoritesScreen = () => {
 
   return (
     <VStack className="flex-1 px-4">
-      <Text size="xl">Mes Favoris ({favoriteEvents.length})</Text>
+      <Text size="xl" className="font-bold">
+        Mes Favoris ({favoriteEvents.length})
+      </Text>
 
       {favoriteEvents.length === 0 ? (
         <VStack className="flex-1 justify-center items-center">

@@ -98,7 +98,11 @@ export default function Step1({ onNext, defaultValues }: Props) {
           )}
         </VStack>
 
-        <Button onPress={handleSubmit(onNext)} isDisabled={isSubmitting}>
+        <Button
+          onPress={handleSubmit(onNext)}
+          isDisabled={isSubmitting}
+          className="rounded-sm"
+        >
           <ButtonText>Continuer</ButtonText>
         </Button>
       </VStack>

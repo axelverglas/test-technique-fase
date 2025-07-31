@@ -7,6 +7,8 @@ export const EventSchema = z.object({
   image: z.string().url("L'URL de l'image doit être valide"),
   description: z.string().optional(),
   location: z.string().optional(),
+  latitude: z.number().optional(),
+  longitude: z.number().optional(),
   price: z.number().min(0, "Le prix doit être positif").optional(),
 });
 

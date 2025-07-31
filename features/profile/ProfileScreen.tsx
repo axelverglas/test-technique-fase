@@ -21,7 +21,9 @@ export const ProfileScreen = () => {
   return (
     <Box className="flex-1 p-6">
       <VStack space="lg">
-        <Text size="2xl">Profil</Text>
+        <Text size="2xl" className="font-bold">
+          Profil
+        </Text>
 
         <VStack space="md">
           <VStack space="xs">
@@ -54,7 +56,7 @@ export const ProfileScreen = () => {
           </VStack>
         </VStack>
 
-        <Button onPress={signOut} className="bg-error-500">
+        <Button onPress={signOut} className="bg-error-500 rounded-sm">
           <ButtonText>Déconnexion</ButtonText>
         </Button>
       </VStack>
