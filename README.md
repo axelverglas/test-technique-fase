@@ -275,4 +275,4 @@ Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
 - [Supabase](https://supabase.com/) pour le backend
 - [Gluestack UI](https://ui.gluestack.io/) pour les composants
 - [NativeWind](https://www.nativewind.dev/) pour le styling
-- [Club Théory AKA Fase] (https://club-theory.com/) pour le test technique 
+- [Club Théory AKA Fase](https://club-theory.com/) pour le test technique 
